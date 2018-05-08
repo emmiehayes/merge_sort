@@ -5,46 +5,65 @@ require './lib/card'
 
 class GuessTest < Minitest::Test
 
-  def setup
-    @card = Card.new("10", "Hearts")
-    @guess = Guess.new("10 of Hearts", @card)
-  end
-
   def test_it_exists
-    assert_instance_of Guess, @guess
+    card_1 = Card.new("10", "Hearts")
+    guess_1 = Guess.new("10 of Hearts", card_1)
+    assert_instance_of Guess, guess_1
+
+    card_2 = Card.new("Queen", "Clubs")
+    guess_2 = Guess.new("2 of Diamonds", card_2)
+    assert_instance_of Guess, guess_2
   end
 
-  def test_it_has_a_response
-    assert_equal "10 of Hearts", @guess.response
+  def test_guess_1_has_attributes
+    card_1 = Card.new("10", "Hearts")
+    guess_1 = Guess.new("10 of Hearts", card_1)
+    assert_equal "10 of Hearts", guess_1.response
+    assert_equal card_1, guess_1.card
   end
 
-  def test_it_has_a_card
-    assert_equal "10", @guess.card.value
+  def test_guess_2_has_attributes
+    card_2 = Card.new("Queen", "Clubs")
+    guess_2 = Guess.new("2 of Diamonds", card_2)
+    assert_equal card_2, guess_2.card
+    assert_equal "Queen", guess_2.card.value
   end
 
-  def test_it_is_correct
-    assert @guess.correct?
+  def test_attribute_card_1_has_a_value
+    card_1 = Card.new("10", "Hearts")
+    guess_1 = Guess.new("10 of Hearts", card_1)
+    assert_equal card_1, guess_1.card
+    assert_equal "10", guess_1.card.value
   end
 
-  def test_it_guess_when_correct
-    assert_equal "Correct!", @guess.feedback
+  def test_attribute_card_2_has_a_value
+    card_2 = Card.new("Queen", "Clubs")
+    guess_2 = Guess.new("2 of Diamonds", card_2)
+    assert_equal card_2, guess_2.card
+    assert_equal "Queen", guess_2.card.value
   end
 
-  def test_it_has_a_value
-    card = Card.new("Queen", "Clubs")
-    guess = Guess.new("2 of Diamonds", card)
-    assert_equal "Queen", guess.card.value
+  def test_correct_guess
+    card_1 = Card.new("10", "Hearts")
+    guess_1 = Guess.new("10 of Hearts", card_1)
+    assert guess_1.correct?
   end
 
-  def test_it_can_recognize_incorrect
-    card = Card.new("Queen", "Clubs")
-    guess = Guess.new("2 of Diamonds", card)
-    refute guess.correct?
+  def test_incorrect_guess
+    card_2 = Card.new("Queen", "Clubs")
+    guess_2 = Guess.new("2 of Diamonds", card_2)
+    refute guess_2.correct?
+  end
+
+  def test_feedback_when_guess_is_correct
+    card_1 = Card.new("10", "Hearts")
+    guess_1 = Guess.new("10 of Hearts", card_1)
+    assert_equal "Correct!", guess_1.feedback
   end
 
   def test_feedback_when_guess_is_incorrect
-    card = Card.new("Queen", "Clubs")
-    guess = Guess.new("2 of Diamonds", card)
-    assert_equal "Incorrect!", guess.feedback
+    card_2 = Card.new("Queen", "Clubs")
+    guess_2 = Guess.new("2 of Diamonds", card_2)
+    assert_equal "Incorrect!", guess_2.feedback
   end
 end

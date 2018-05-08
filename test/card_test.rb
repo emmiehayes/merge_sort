@@ -4,19 +4,23 @@ require './lib/card'
 
 class CardTest < Minitest::Test
 
-  def setup
-    @card = Card.new("Ace", "Spades")
-  end
-
   def test_it_exists
-    assert_instance_of Card, @card
+    card = Card.new("Ace", "Spades")
+    assert_instance_of Card, card
   end
 
   def test_it_has_a_value
-    assert_equal "Ace", @card.value
+    card = Card.new("Ace", "Spades")
+    assert_equal "Ace", card.value
+  end
+
+  def test_it_can_have_integer_value
+    card = Card.new(3, "Diamonds")
+    assert_equal 3, card.value
   end
 
   def test_it_has_a_suit
-    assert_equal "Spades", @card.suit
+    card = Card.new(3, "Diamonds")
+    assert_equal "Diamonds", card.suit
   end
 end
