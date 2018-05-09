@@ -13,12 +13,12 @@ class Deck
 
   def sort
   return @cards if @cards.size <= 1
-   sorted = true
-   while sorted do
+  sorted = true
+    while sorted do
     sorted = false
     (count - 1).times do |index|
       if @cards[index].value > @cards[index + 1].value
-         @cards[index].value, @cards[index + 1].value = @cards[index + 1].value, @cards[index].value
+         @cards[index], @cards[index + 1] = @cards[index + 1], @cards[index]
          sorted = true
       end
      end
