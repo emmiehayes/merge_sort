@@ -16,8 +16,8 @@ class Round
 
   def record_guess(response)
     guess = Guess.new(response, current_card)
-    @deck.cards.shift
     @guesses << guess
+    @deck.cards.shift
     @correct_guesses += 1 if guess.correct?
     guess
   end
