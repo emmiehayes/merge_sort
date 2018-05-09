@@ -1,18 +1,30 @@
 require 'pry'
 class Round
   attr_reader :deck,
-              :guesses
+              :guesses,
+              :correct_guesses
 
   def initialize(deck)
     @deck = deck
     @guesses = []
+    @correct_guesses = 0
   end
 
   def current_card
     @deck.cards[0]
   end
 
-  def record_guess(guess)
+  def record_guess(response)
+    guess = Guess.new(response, current_card)
     @guesses << guess
+    guess
+  end
+
+  def count
+    @guesses.length
+  end
+
+  def number_correct
+    @correct_guesses += 1
   end
 end
