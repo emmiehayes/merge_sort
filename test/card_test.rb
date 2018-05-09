@@ -14,13 +14,13 @@ class CardTest < Minitest::Test
     assert_equal "Ace", card.value
   end
 
-  def test_it_can_have_integer_value
-    card = Card.new(3, "Diamonds")
-    assert_equal 3, card.value
+  def test_it_can_be_an_integer
+    
   end
 
+
   def test_it_has_a_suit
-    card = Card.new(3, "Diamonds")
+    card = Card.new("Ace", "Diamonds")
     assert_equal "Diamonds", card.suit
   end
 end

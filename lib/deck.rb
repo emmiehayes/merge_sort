@@ -1,3 +1,4 @@
+require 'pry'
 class Deck
 
   attr_reader :cards
@@ -8,5 +9,20 @@ class Deck
 
   def count
     @cards.length
+  end
+
+  def sort
+  return @cards if @cards.size <= 1
+   sorted = true
+   while sorted do
+    sorted = false
+    (count - 1).times do |index|
+      if @cards[index].value > @cards[index + 1].value
+         @cards[index].value, @cards[index + 1].value = @cards[index + 1].value, @cards[index].value
+         sorted = true
+      end
+     end
+    end
+    @cards
   end
 end
