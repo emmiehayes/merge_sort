@@ -7,12 +7,12 @@ class Guess
     @card = card
   end
 
-  def concatenate_card_attributes
+  def concat_card_attributes
     card.value + " of " + card.suit
   end
 
   def correct?
-    @response == concatenate_card_attributes
+    @response == concat_card_attributes
   end
 
   def feedback
