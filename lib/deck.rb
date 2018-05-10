@@ -11,17 +11,11 @@ class Deck
 
   def define_values_above_9
     count.times do |index|
-      if @cards[index].value == "Ace"
-         @cards[index].value = "99"
-      elsif @cards[index].value == "King"
-        @cards[index].value = "98"
-      elsif @cards[index].value == "Queen"
-        @cards[index].value = "97"
-      elsif @cards[index].value == "Jack"
-        @cards[index].value = "96"
-      elsif @cards[index].value == "10"
-        @cards[index].value = "95"
-      end
+    @cards[index].value = "99" if @cards[index].value == "Ace"
+    @cards[index].value = "98" if @cards[index].value == "King"
+    @cards[index].value = "97" if @cards[index].value == "Queen"
+    @cards[index].value = "96" if @cards[index].value == "Jack"
+    @cards[index].value = "95" if @cards[index].value == "10"
     end
   end
 
