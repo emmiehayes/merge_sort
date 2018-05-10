@@ -120,4 +120,14 @@ class RoundTest < Minitest::Test
     round.record_guess("Jack of Spades")
     assert_equal 1, round.number_correct
   end
+
+  def test_it_can_calculate_percentage_of_correct_guesses
+    card_1 = Card.new("3","Hearts")
+    card_2 = Card.new("4", "Clubs")
+    deck = Deck.new([card_1, card_2])
+    round = Round.new(deck)
+    round.record_guess("3 of Hearts")
+    round.record_guess("Jack of Spades")
+    assert_equal 50, round.percent_correct
+  end
 end
