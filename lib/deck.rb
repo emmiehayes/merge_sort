@@ -1,3 +1,4 @@
+require 'pry'
 class Deck
   attr_reader :cards
 
@@ -9,7 +10,7 @@ class Deck
     @cards.length
   end
 
-  def define_values_above_9
+  def define_values_over_9
     count.times do |index|
     @cards[index].value = "99" if @cards[index].value == "Ace"
     @cards[index].value = "98" if @cards[index].value == "King"
@@ -25,7 +26,7 @@ class Deck
     while sorted do
     sorted = false
     (count - 1).times do |index|
-      define_values_above_9
+      define_values_over_9
       if @cards[index].value > @cards[index + 1].value
          @cards[index], @cards[index + 1] = @cards[index + 1], @cards[index]
          sorted = true

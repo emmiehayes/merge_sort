@@ -24,4 +24,9 @@ class CardTest < Minitest::Test
     assert_equal "4", card.value
     assert_equal "Hearts", card.suit
   end
+
+  def test_card_value_is_a_string_for_comparison
+    card = Card.new(4, "Hearts")
+    assert_instance_of String, card.value
+  end
 end

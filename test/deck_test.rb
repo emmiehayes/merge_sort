@@ -29,6 +29,12 @@ class DeckTest < Minitest::Test
     assert_equal 3, deck.count
   end
 
+  def test_it_returns_cards_when_only_one_card
+    card_1 = Card.new("Queen","Hearts")
+    deck = Deck.new([card_1])
+    assert_equal [card_1], deck.sort
+  end
+
   def test_it_can_be_sorted_by_value
     card_1 = Card.new("4","Hearts")
     card_2 = Card.new("3", "Clubs")

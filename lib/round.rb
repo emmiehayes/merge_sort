@@ -16,7 +16,7 @@ class Round
   end
 
   def new_guess(response)
-    Guess.new(response, current_card)
+    guess = Guess.new(response, current_card)
   end
 
   def tally_correct_guess

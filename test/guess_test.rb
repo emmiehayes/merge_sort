@@ -18,6 +18,12 @@ class GuessTest < Minitest::Test
     assert_equal card_1, guess_1.card
   end
 
+  def test_response_is_a_string
+    card_1 = Card.new("10", "Hearts")
+    guess_1 = Guess.new("10 of Hearts", card_1)
+    assert_instance_of String, guess_1.response
+  end
+
   def test_it_has_a_card_that_has_attributes
     card_1 = Card.new("10", "Hearts")
     guess_1 = Guess.new("10 of Hearts", card_1)

@@ -20,12 +20,20 @@ class RoundTest < Minitest::Test
     assert_equal deck, round.deck
   end
 
-  def test_at_the_beginning_guesses_is_empty_array
+  def test_at_the_beginning_all_guesses_is_empty_array
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
     assert_equal [], round.all_guesses
+  end
+
+  def test_at_the_beginning_correct_guesses_is_zero
+    card_1 = Card.new("3","Hearts")
+    card_2 = Card.new("4", "Clubs")
+    deck = Deck.new([card_1, card_2])
+    round = Round.new(deck)
+    assert_equal 0, round.correct_guesses
   end
 
   def test_it_has_a_current_card

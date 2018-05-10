@@ -3,7 +3,7 @@ class Card
   attr_reader :suit
 
   def initialize(value, suit)
-    @value = value
+    @value = value.to_s
     @suit = suit
   end
 end
