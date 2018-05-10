@@ -8,15 +8,19 @@ class Round
   end
 
   def record_guess(response)
-    guess = new_guess(response)
-    @all_guesses << guess
-    @correct_guesses += 1 if guess.correct?
+    current_guess = new_guess(response)
+    @all_guesses << current_guess
+    tally_correct_guess if current_guess.correct?
     discard_current_card
-    guess
+    current_guess
   end
 
   def new_guess(response)
-    guess = Guess.new(response, current_card)
+    Guess.new(response, current_card)
+  end
+
+  def tally_correct_guess
+    @correct_guesses += 1
   end
 
   def current_card
@@ -26,8 +30,6 @@ class Round
   def discard_current_card
     @deck.cards.shift
   end
-
-
 
   def count
     @all_guesses.length

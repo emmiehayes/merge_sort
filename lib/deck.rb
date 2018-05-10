@@ -25,7 +25,6 @@ class Deck
     end
   end
 
-
   def sort
   return @cards if @cards.size <= 1
   sorted = true

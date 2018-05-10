@@ -15,7 +15,13 @@ class CardTest < Minitest::Test
   end
 
   def test_it_has_a_suit
-    card = Card.new("Ace", "Diamonds")
-    assert_equal "Diamonds", card.suit
+    card = Card.new("Ace", "Spades")
+    assert_equal "Spades", card.suit
+  end
+
+  def test_a_card_value_can_contain_numbers
+    card = Card.new("4", "Hearts")
+    assert_equal "4", card.value
+    assert_equal "Hearts", card.suit
   end
 end

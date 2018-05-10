@@ -1,9 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/card'
-require './lib/deck'
-require './lib/guess'
-require './lib/round'
+require_relative 'test_helper'
 
 class RoundTest < Minitest::Test
 
@@ -23,7 +20,7 @@ class RoundTest < Minitest::Test
     assert_equal deck, round.deck
   end
 
-  def test_guesses_is_first_an_empty_array
+  def test_at_the_beginning_guesses_is_empty_array
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
@@ -114,7 +111,7 @@ class RoundTest < Minitest::Test
     assert_equal 1, round.number_correct
   end
 
-  def test_it_will_not_count_an_incorrect_guess_as_a_correct_guess
+  def test_no_record_of_incorrect_guess_as_correct
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
