@@ -28,7 +28,7 @@ class RoundTest < Minitest::Test
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
-    assert_equal [], round.guesses
+    assert_equal [], round.all_guesses
   end
 
   def test_it_has_a_current_card
@@ -54,7 +54,7 @@ class RoundTest < Minitest::Test
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
     round.record_guess("3 of Hearts")
-    assert_equal card_1, round.guesses[0].card
+    assert_equal card_1, round.all_guesses[0].card
   end
 
   def test_it_can_record_two_guesses
@@ -64,8 +64,8 @@ class RoundTest < Minitest::Test
     round = Round.new(deck)
     round.record_guess("3 of Hearts")
     round.record_guess("4 of Clubs")
-    assert_equal card_1, round.guesses[0].card
-    assert_equal card_2, round.guesses[1].card
+    assert_equal card_1, round.all_guesses[0].card
+    assert_equal card_2, round.all_guesses[1].card
   end
 
   def test_it_can_count_a_guess
@@ -74,7 +74,7 @@ class RoundTest < Minitest::Test
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
     round.record_guess("3 of Hearts")
-    assert_equal 1, round.guesses.count
+    assert_equal 1, round.all_guesses.count
   end
 
   def test_it_can_count_two_guesses
@@ -84,7 +84,7 @@ class RoundTest < Minitest::Test
     round = Round.new(deck)
     round.record_guess("3 of Hearts")
     round.record_guess("4 of Clubs")
-    assert_equal 2, round.guesses.count
+    assert_equal 2, round.all_guesses.count
   end
 
   def test_it_can_provide_feedback_for_correct_guess
@@ -93,7 +93,7 @@ class RoundTest < Minitest::Test
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
     round.record_guess("3 of Hearts")
-    assert_equal "Correct!", round.guesses[0].feedback
+    assert_equal "Correct!", round.all_guesses[0].feedback
   end
 
   def test_it_can_provide_feedback_for_incorrect_guess
@@ -102,7 +102,7 @@ class RoundTest < Minitest::Test
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
     round.record_guess("Jack of Spades")
-    assert_equal "Incorrect!", round.guesses[0].feedback
+    assert_equal "Incorrect!", round.all_guesses[0].feedback
   end
 
   def test_it_can_count_a_correct_guess
