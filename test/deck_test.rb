@@ -37,14 +37,16 @@ class DeckTest < Minitest::Test
     assert_equal [card_2, card_1, card_3], deck.sort
   end
 
-  def test_face_cards_can_be_sorted_as_integers
+  def test_face_cards_and_10_can_be_sorted
     card_1 = Card.new("Queen","Hearts")
     card_2 = Card.new("Jack", "Clubs")
     card_3 = Card.new("Ace", "Diamonds")
     card_4 = Card.new("King", "Spades")
-    card_5 = Card.new("2", "Diamonds")
-    deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
-    result = [card_5, card_2, card_1, card_4, card_3]
-    assert_equal result, deck.sort
+    card_5 = Card.new("9", "Diamonds")
+    card_6 = Card.new("10", "Clubs")
+    six_cards = [card_1, card_2, card_3, card_4, card_5, card_6]
+    deck = Deck.new(six_cards)
+    sorted = [card_5, card_6, card_2, card_1, card_4, card_3]
+    assert_equal sorted, deck.sort
   end
 end
